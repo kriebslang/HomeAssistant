@@ -24,7 +24,7 @@ spec:
           image:  homeassistant/home-assistant
           imagePullPolicy: Always
           ports:
-            - containerPort: 80
+            - containerPort: 8123
       resources:
         requests:
           cpu: "300m"
