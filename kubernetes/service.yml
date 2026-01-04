@@ -1,0 +1,10 @@
+﻿apiVersion: v1
+kind: Service
+metadata:
+  name: homeassistant-service
+spec:
+  selector:
+    app: homeassistant
+  ports:
+    - protocol: TCP
+      port: 80

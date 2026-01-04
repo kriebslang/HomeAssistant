@@ -1,0 +1,40 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: homeassistant
+  labels:
+    app: homeassistant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: homeassistant
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: collector
+    spec:
+      containers:
+        - name:  homeassistant
+          image:  homeassistant/home-assistant
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+      resources:
+        requests:
+          cpu: "300m"
+          memory: "500Mi"
+        limits:
+          cpu: "500m"
+          memory: "1Gi"
+      volumes:
+        - name: homeassistant-volume
+          persistentVolumeClaim:
+            claimName: homeassistant-volume-claim
+
+              
