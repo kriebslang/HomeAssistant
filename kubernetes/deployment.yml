@@ -17,7 +17,7 @@ spec:
   template:
     metadata:
       labels:
-        app: collector
+        app: homeassistant
     spec:
       containers:
         - name:  homeassistant
